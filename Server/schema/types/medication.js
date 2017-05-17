@@ -16,7 +16,7 @@ module.exports = new GraphQLObjectType({
     id: {
       type: GraphQLInt,
       description: 'The patient id.'
-    },  
+    },
     name: {
       type: GraphQLString,
       description: 'Name of medication.',
@@ -39,4 +39,3 @@ module.exports = new GraphQLObjectType({
     }
   },
 });
-

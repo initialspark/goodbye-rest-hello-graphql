@@ -1,0 +1,24 @@
+<div *ngIf="patientMedications">
+    <table class='table table-striped' *ngIf="patientMedications">
+        <thead>
+            <tr>
+                <th>Medication Name</th>
+                <th>Dose</th>
+                <th>Start</th>
+                <th>End</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let medication of patientMedications">
+                <td>{{ medication.name }}</td>
+                <td>{{ medication.dose }}</td>
+                <td>{{ medication.start }}</td>
+                <td>{{ medication.end }}</td>
+            </tr>
+        </tbody>
+    </table>
+    
+<p *ngIf="patientMedications.length == 0">
+    No medications recorded for patient.
+</p>
+</div>

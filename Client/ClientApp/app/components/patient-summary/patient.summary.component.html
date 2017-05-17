@@ -1,0 +1,17 @@
+<h2 class="page-header">Patient Summary</h2>
+
+<p *ngIf="!patient"><em>Patient not found.</em></p>
+
+<div class="row text-center" *ngIf="patient">
+    <div class="col-lg-4 col-sm-3"></div>
+    <div class="col-lg-4 col-sm-6">
+        <img class="img-circle img-responsive img-center" [src]="genderIcon" alt="patient icon" />
+        <h3 >{{patient.firstName}} {{patient.surname}}
+        </h3>
+        <p><strong>NHS: </strong>{{patient.nhsNumber}}</p>
+        <p><strong>DOB: </strong>{{patient.dateOfBirth}}</p>
+    </div>
+    <div class="col-lg-4 col-sm-3"></div>
+</div>
+
+<patient-medication></patient-medication>

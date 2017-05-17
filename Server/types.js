@@ -13,6 +13,6 @@ module.exports = new GraphQLEnumType({
         },
         NOTSPECIFICED: {
             value: 3
-        },
+        }
     }
 });

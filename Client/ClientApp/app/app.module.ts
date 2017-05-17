@@ -7,7 +7,8 @@ import { AppComponent } from './components/app/app.component'
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './components/home/home.component';
 import { PatientsComponent } from './components/patients/patients.component';
-import { PatientSummaryComponent } from './components/patientsummary/patientsummary.component';
+import { PatientSummaryComponent } from './components/patient-summary/patient.summary.component';
+import { PatientMedicationComponent } from './components/patient-medication/patient.medication.component';
 
 const client = new ApolloClient({
   networkInterface: createNetworkInterface({
@@ -26,6 +27,7 @@ export function provideClient(): ApolloClient {
         NavMenuComponent,
         PatientsComponent,
         PatientSummaryComponent,
+        PatientMedicationComponent,
         HomeComponent
     ],
     imports: [

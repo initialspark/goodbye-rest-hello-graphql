@@ -35,8 +35,12 @@ module.exports = {
             type: new GraphQLNonNull(PatientInputType)
         }
     },
-    resolve(obj, {input}, {db}) {
-          return db.run("INSERT INTO Patient (first_name, surname, gender,nhs, date_of_birth) VALUES ($firstname,$surname,$gender,$nhs,$dob)", {
+    resolve(obj, {
+        input
+    }, {
+        db
+    }) {
+        return db.run("INSERT INTO Patient (first_name, surname, gender,nhs, date_of_birth) VALUES ($firstname,$surname,$gender,$nhs,$dob)", {
                 $firstname: input.firstName,
                 $surname: input.surname,
                 $gender: input.gender,
@@ -44,6 +48,6 @@ module.exports = {
                 $dob: input.dateOfBirth
             })
             .then(() => db.get('SELECT * FROM Patient_View WHERE nhsNumber = ?', input.nhs))
-            .then((p) => p); 
+            .then((p) => p);
     }
 };

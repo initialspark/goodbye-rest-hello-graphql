@@ -14,15 +14,6 @@ interface PatientDetail {
     firstName: string;
     gender: string;
     dateOfBirth: string;
-    medications: PatientMedication[];
-}
-
-interface PatientMedication {
-    name: string;
-    dose: string;
-    start: string;
-    end: string;
-    isActive: boolean;
 }
 
 @Component({
@@ -34,6 +25,7 @@ export class PatientSummaryComponent {
     public patient: PatientDetail;
     public loading: boolean;
     id: string;
+    public genderIcon: String;
 
     constructor(private apollo: Apollo, private activatedRoute: ActivatedRoute) { }
 
@@ -42,12 +34,17 @@ export class PatientSummaryComponent {
             this.id = params['id'];
 
             this.apollo.watchQuery<QueryResponse>({
-                query: gql` query { patient(nhsNumber:"${this.id}"){firstName, surname, nhsNumber, gender, dateOfBirth, medications{name,dose,start,end,isActive}}}`
+                query: gql` query { patient(nhsNumber:"${this.id}"){firstName, surname, nhsNumber, gender, dateOfBirth}}`
             }).subscribe(({ data }) => {
                 this.loading = data.loading;
                 this.patient = data.patient;
+
+                this.genderIcon = data.patient.gender === 'MALE'
+                    ?
+                    require('../../../../wwwroot/img/male-icon.png')
+                    :
+                    require('../../../../wwwroot/img/female-icon.png');
             });
         });
-
     }
 }

@@ -17,6 +17,10 @@
     "sqlite": "^2.7.0"
   },
   "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "nodemon": "^1.11.0"
   }
 }

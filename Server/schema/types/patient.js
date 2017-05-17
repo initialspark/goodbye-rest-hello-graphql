@@ -42,7 +42,7 @@ module.exports = new GraphQLObjectType({
             type: GraphQLString,
             description: 'Nhs Number of patient.'
         },
-        medications: {
+        medications: { 
             type: new GraphQLList(MedicationType),
             description: 'Medications for patient',
             resolve: (obj, args, context) => context.db.all('SELECT dose,name,start,end,isActive FROM PatientMedication_View WHERE nhsNumber = ?', obj.nhsNumber)
