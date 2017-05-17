@@ -1,0 +1,22 @@
+<h2 class="page-header">Patients</h2>
+
+<p *ngIf="!patients"><em>Loading...</em></p>
+
+<table class='table' *ngIf="patients">
+    <thead>
+        <tr>
+            <th>NHS Number</th>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let patient of patients">
+            <td>{{ patient.nhsNumber }}</td>
+            <td>{{ patient.firstName }}</td>
+            <td>{{ patient.surname }}</td>
+            <td><a [routerLink]="'/patients/' + patient.nhsNumber">View</a></td>
+        </tr>
+    </tbody>
+</table>
