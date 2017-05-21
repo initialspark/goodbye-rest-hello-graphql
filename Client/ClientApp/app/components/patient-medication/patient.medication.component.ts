@@ -18,7 +18,6 @@ interface PatientMedication {
 
 @Component({
     selector: 'patient-medication',
-    // styleUrls: ['./patient.medication.component.css'],
     templateUrl: './patient.medication.component.html'
 })
 export class PatientMedicationComponent {
