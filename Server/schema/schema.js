@@ -12,7 +12,7 @@ const MedicationType = require('./types/medication');
 const RootQueryType = new GraphQLObjectType({
     name: 'RootQueryType',
     fields: {
-        patients: {
+        allPatients: {
             type: new GraphQLList(PatientType),
             description: 'Gets a list of patients',
             resolve: (obj, args, context) => context.db.all('SELECT * FROM Patient_View')
