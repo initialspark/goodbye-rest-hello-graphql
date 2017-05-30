@@ -9,28 +9,16 @@ const {
 const PatientType = require('./types/patient');
 const MedicationType = require('./types/medication');
 
+const PatientQueries = require('./queries/patientQuery');
+const AddPatientMutation = require('./mutations/add-patient');
+
 const RootQueryType = new GraphQLObjectType({
     name: 'RootQueryType',
-    fields: {
-        allPatients: {
-            type: new GraphQLList(PatientType),
-            description: 'Gets a list of patients',
-            resolve: (obj, args, context) => context.db.all('SELECT * FROM Patient_View')
-        },
-        patient: {
-            type: PatientType,
-            description: 'Gets patient by nhs number',
-            args: {
-                nhsNumber: {
-                    type: new GraphQLNonNull(GraphQLString)
-                }
-            },
-            resolve: (obj, args, context) => context.db.get('SELECT * FROM Patient_View WHERE nhsNumber = ?', args.nhsNumber)
-        }
-    }
+    fields: () => ({
+        patient: PatientQueries.patient,
+        allPatients: PatientQueries.allPatients,
+    })
 });
-
-const AddPatientMutation = require('./mutations/add-patient');
 
 const RootMutationType = new GraphQLObjectType({
     name: 'RootMutation',

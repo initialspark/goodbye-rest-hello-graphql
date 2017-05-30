@@ -8,14 +8,14 @@ const cors = require('cors');
 const app = express();
 app.use(cors({origin: 'http://localhost:5000'}));
 
-app.use('/', function (req, res) {
-  res.send('Simple web server')
-});
-
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   graphiql: true,
   context: {db}}));
+
+app.use('/', function (req, res) {
+  res.send('Simple web server')
+});
 
 Promise.resolve()
   .then(() => db.open('./EHR.sqlite', {Promise}))

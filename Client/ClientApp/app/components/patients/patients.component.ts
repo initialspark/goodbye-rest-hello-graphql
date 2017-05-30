@@ -3,7 +3,7 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
 interface QueryResponse {
-    patients
+    allPatients
     loading
 }
 
@@ -29,7 +29,7 @@ export class PatientsComponent {
             query: gql` query { allPatients{firstName, surname, nhsNumber}}`
         }).subscribe(({ data }) => {
             this.loading = data.loading;
-            this.patients = data.patients;
+            this.patients = data.allPatients;
         });
     }
 }
