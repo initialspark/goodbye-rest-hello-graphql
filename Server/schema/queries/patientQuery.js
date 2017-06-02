@@ -17,11 +17,11 @@ module.exports = {
                 type: new GraphQLNonNull(GraphQLString)
             }
         },
-        resolve: (obj, args, context) => context.db.get('SELECT * FROM Patient_View WHERE nhsNumber = ?', args.nhsNumber)
+        resolve: (obj, args, context) => context.dbCtx.getPatient(args.nhsNumber)
     },
     allPatients: {
         type: new GraphQLList(PatientType),
         description: 'Gets a list of patients',
-        resolve: (obj, args, context) => context.db.all('SELECT * FROM Patient_View')
+        resolve: (obj, args, context) => context.dbCtx.getAllPatients()
     }
 }

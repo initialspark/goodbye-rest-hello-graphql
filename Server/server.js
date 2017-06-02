@@ -2,8 +2,10 @@ const express = require('express');
 const Promise = require('bluebird');
 const db = require('sqlite');
 const graphqlHTTP = require('express-graphql');
-const schema = require('./schema/schema.js');
+const schema = require('./schema/schema');
 const cors = require('cors');
+const DataLoader = require('dataloader');
+const dbContext = require('./db/db-context')(db);
 
 const app = express();
 app.use(cors({origin: 'http://localhost:5000'}));
@@ -11,14 +13,15 @@ app.use(cors({origin: 'http://localhost:5000'}));
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   graphiql: true,
-  context: {db}}));
+  context: {dbCtx:dbContext}}));
 
 app.use('/', function (req, res) {
   res.send('Simple web server')
 });
 
 Promise.resolve()
-  .then(() => db.open('./EHR.sqlite', {Promise}))
+  .then(() => db.open('./EHR.sqlite', {Promise, verbose: true}))
+  .then(() => db.driver.on('trace', console.log))
   .catch(err => console.error(err.stack))
   .finally(() => app.listen(5050));
 
