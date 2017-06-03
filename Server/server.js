@@ -10,10 +10,16 @@ const dbContext = require('./db/db-context')(db);
 const app = express();
 app.use(cors({origin: 'http://localhost:5000'}));
 
-app.use('/graphql', graphqlHTTP({
-  schema: schema,
-  graphiql: true,
-  context: {dbCtx:dbContext}}));
+ app.use('/graphql', (req, res) => {
+    const loaders = {
+        patientMedications: new DataLoader(dbContext.getPatientMedications)
+      };
+    graphqlHTTP({
+      schema: schema,
+      graphiql: true,
+      context: { dbCtx: dbContext, loaders }
+    })(req, res);
+  });
 
 app.use('/', function (req, res) {
   res.send('Simple web server')

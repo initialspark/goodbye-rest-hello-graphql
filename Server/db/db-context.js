@@ -1,3 +1,13 @@
+const _ = require('lodash');
+
+function orderedFor(rows, collection, field) {
+    const inGroupsOfField = _.groupBy(rows, field);
+    return collection.map(id => {
+        const elementArray = inGroupsOfField[id];
+        return elementArray ? elementArray : [];
+    })
+};
+
 module.exports = db => {
     return {
         getPatient(nhsNumber) {
@@ -6,8 +16,9 @@ module.exports = db => {
         getAllPatients() {
             return db.all('SELECT * FROM Patient_View');
         },
-        getPatientMedications(patientId) {
-            return db.all('SELECT dose,name,prescribedOn FROM PatientMedication_View WHERE patientId = ?', patientId);
+        getPatientMedications(patientIds) {
+            var query = `SELECT dose,name,prescribedOn, patientId FROM PatientMedication_View WHERE patientId in (${patientIds})`;
+            return db.all(query).then(rows => orderedFor(rows, patientIds, 'patientId'));
         },
         addPatient(nhsNumber, firstName, surname, dob, gender) {
             console.log(nhsNumber);

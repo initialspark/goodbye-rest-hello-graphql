@@ -29,7 +29,7 @@ export class PatientMedicationComponent {
         this.activatedRoute.params.subscribe((params: Params) => {
             this.id = params['id'];
 
-            this.apollo.watchQuery<QueryResponse>({
+            this.apollo.query<QueryResponse>({
                 query: gql` query { patient(nhsNumber:"${this.id}"){medications{name,dose,prescribedOn}}}`
             }).subscribe(({ data }) => {
                 this.loading = data.loading;

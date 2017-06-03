@@ -25,7 +25,7 @@ export class PatientsComponent {
     constructor(private apollo: Apollo) { }
 
     ngOnInit() {
-        this.apollo.watchQuery<QueryResponse>({
+        this.apollo.query<QueryResponse>({
             query: gql` query { allPatients{firstName, surname, nhsNumber}}`
         }).subscribe(({ data }) => {
             this.loading = data.loading;
