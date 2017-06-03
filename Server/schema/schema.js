@@ -23,7 +23,7 @@ const RootQueryType = new GraphQLObjectType({
 const RootMutationType = new GraphQLObjectType({
     name: 'RootMutation',
     fields: () => ({
-        AddPatient: AddPatientMutation,
+        addPatient: AddPatientMutation,
     })
 });
 

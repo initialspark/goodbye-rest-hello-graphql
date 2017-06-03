@@ -45,7 +45,7 @@ module.exports = new GraphQLObjectType({
         medications: {
             type: new GraphQLList(MedicationType),
             description: 'Medications for patient',
-            resolve: (patient, args, context) => context.dbCtx.getPatientMedications(patient.nhsNumber)
+            resolve: (patient, args, context) => context.dbCtx.getPatientMedications(patient.id)
         }
     },
 });

@@ -11,9 +11,7 @@ interface QueryResponse {
 interface PatientMedication {
     name: string;
     dose: string;
-    start: string;
-    end: string;
-    isActive: boolean;
+    prescribedOn: string;
 }
 
 @Component({
@@ -32,7 +30,7 @@ export class PatientMedicationComponent {
             this.id = params['id'];
 
             this.apollo.watchQuery<QueryResponse>({
-                query: gql` query { patient(nhsNumber:"${this.id}"){medications{name,dose,start,end,isActive}}}`
+                query: gql` query { patient(nhsNumber:"${this.id}"){medications{name,dose,prescribedOn}}}`
             }).subscribe(({ data }) => {
                 this.loading = data.loading;
                 this.patientMedications = data.patient.medications;

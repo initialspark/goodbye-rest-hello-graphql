@@ -35,7 +35,7 @@ module.exports = {
             type: new GraphQLNonNull(PatientInputType)
         }
     },
-    resolve(obj, input, context) {
-        return context.db.addPatient(input);
+    resolve(obj, {input}, context) {
+        return context.dbCtx.addPatient(input.nhs, input.firstName, input.surname, input.dateOfBirth, input.gender);
     }
 };

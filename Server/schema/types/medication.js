@@ -25,17 +25,9 @@ module.exports = new GraphQLObjectType({
       type: GraphQLString,
       description: 'Dose of medication',
     },
-    isActive: {
+    prescribedOn: {
       type: GraphQLString,
-      description: 'Is medication still taken.',
-    },
-    start: {
-      type: GraphQLString,
-      description: 'Start date period of medication.',
-    },
-    end: {
-      type: GraphQLString,
-      description: 'End date period of medication.',
+      description: 'Start date period of medication.'
     }
   },
 });

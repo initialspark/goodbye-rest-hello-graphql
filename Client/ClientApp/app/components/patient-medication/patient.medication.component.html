@@ -4,16 +4,14 @@
             <tr>
                 <th>Medication Name</th>
                 <th>Dose</th>
-                <th>Start</th>
-                <th>End</th>
+                <th>Prescribed On</th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let medication of patientMedications">
                 <td>{{ medication.name }}</td>
                 <td>{{ medication.dose }}</td>
-                <td>{{ medication.start }}</td>
-                <td>{{ medication.end }}</td>
+                <td>{{ medication.prescribedOn }}</td>
             </tr>
         </tbody>
     </table>
