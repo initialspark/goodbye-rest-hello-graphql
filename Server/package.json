@@ -15,6 +15,7 @@
     "express": "^4.15.3",
     "express-graphql": "^0.6.6",
     "graphql": "^0.9.6",
+    "lodash": "^4.17.4",
     "sqlite": "^2.8.0"
   },
   "devDependencies": {
