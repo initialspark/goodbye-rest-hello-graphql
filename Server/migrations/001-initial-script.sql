@@ -20,6 +20,12 @@ INSERT INTO PatientMedication (patientid, name, dose, prescribed_on) VALUES (1,'
 INSERT INTO PatientMedication (patientid, name, dose, prescribed_on) VALUES (2,'Zopiclone','3.75mg tablets, one at night if needed to help sleep', '09/05/2015');
 INSERT INTO PatientMedication (patientid, name, dose, prescribed_on) VALUES (2,'Aspirin ','75mg dispersible tablets, ONE IN A MORNING', '18/03/2010');
 INSERT INTO PatientMedication (patientid, name, dose, prescribed_on) VALUES (2,'Citalopram','20mg tablets once a day', '10/01/2016');
+INSERT INTO PatientMedication (patientid, name, dose, prescribed_on) VALUES (3,'Aspirin ','75mg dispersible tablets, ONE IN A MORNING', '18/03/2010');
+INSERT INTO PatientMedication (patientid, name, dose, prescribed_on) VALUES (4,'Aspirin ','75mg dispersible tablets, ONE IN A MORNING', '18/03/2010');
+INSERT INTO PatientMedication (patientid, name, dose, prescribed_on) VALUES (5,'Aspirin ','75mg dispersible tablets, ONE IN A MORNING', '18/03/2010');
+INSERT INTO PatientMedication (patientid, name, dose, prescribed_on) VALUES (6,'Aspirin ','75mg dispersible tablets, ONE IN A MORNING', '18/03/2010');
+INSERT INTO PatientMedication (patientid, name, dose, prescribed_on) VALUES (7,'Aspirin ','75mg dispersible tablets, ONE IN A MORNING', '18/03/2010');
+INSERT INTO PatientMedication (patientid, name, dose, prescribed_on) VALUES (8,'Aspirin ','75mg dispersible tablets, ONE IN A MORNING', '18/03/2010');
 
 
 CREATE VIEW Patient_View AS
